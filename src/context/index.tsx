@@ -17,14 +17,14 @@ const queryClient = new QueryClient();
 
 const theme = merge(lightTheme(), {
   colors: {
-    accentColor: "#FF801F",
+    accentColor: "#bee3f8",
     accentColorForeground: "#fff",
     actionButtonSecondaryBackground: "#DADDD8",
     connectButtonBackground: "#fff",
     connectButtonBackgroundError: "#fff",
     connectButtonInnerBackground: "#fff",
     connectButtonText: "#000",
-    connectButtonTextError: "#FF494A",
+    connectButtonTextError: "#fff",
   },
 } as Theme);
 

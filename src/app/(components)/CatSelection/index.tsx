@@ -46,10 +46,9 @@ const CatSelection: FC<CatSelectionProps> = ({
               </>
             )}
             <Button
-              colorScheme="pink"
               onClick={onOpen}
               isLoading={loading}
-              className="box-shadow"
+              className="box-shadow bg-blue-300"
             >
               {!cat ? `Select ${name}` : "Change"}
             </Button>

@@ -31,6 +31,9 @@ const NftMarketplace = () => {
     await buyOffer(id, price);
   };
 
+  if (!isConnected) {
+    return <NotConnected />;
+  }
   return (
     <>
       <Header
@@ -38,7 +41,6 @@ const NftMarketplace = () => {
         description="Display all the mood dools that are currently for sale."
       />
       {!catsOffersForMarket && <Loading />}
-      {!isConnected && <NotConnected />}
       {catsOffersForMarket?.length == 0 ? (
         <EmptyCard />
       ) : (

@@ -19,11 +19,12 @@ const NotConnected: FC = () => {
           height={isMobile ? "260px" : "200px"}
           w={isMobile ? "95%" : "40%"}
           borderRadius="10px"
+          bg="white"
         >
           <VStack>
             <AlertIcon boxSize="40px" />
             <Text fontSize={18} p={3}>
-              You need to connect a crypto wallet to perform this action.
+              You need to connect a wallet to perform this action.
             </Text>
 
             <ConnectButton />

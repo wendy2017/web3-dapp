@@ -30,13 +30,20 @@ export default function NavBar() {
         </Link>
 
         <Menu>
-          <MenuButton className="mx-4">
-            MoodDoll Market <ChevronDownIcon />
+          <MenuButton
+            className="mx-4"
+            fontSize={24}
+            fontWeight="bold"
+            textColor="#000"
+          >
+            Dogs Market <ChevronDownIcon />
           </MenuButton>
           <MenuList>
             {projectsSources.map((item) => (
               <MenuItem key={item.key}>
-                <Link href={item.url}>{item.name}</Link>
+                <Link href={item.url} className="font-bold text-base">
+                  {item.name}
+                </Link>
               </MenuItem>
             ))}
           </MenuList>

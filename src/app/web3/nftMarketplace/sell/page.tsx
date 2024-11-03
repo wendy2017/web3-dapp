@@ -9,18 +9,21 @@ import {
   VStack,
   Wrap,
 } from "@chakra-ui/react";
+import { useAccount } from "wagmi";
 
 import Header from "@/app/(components)/Header";
 import Loading from "@/app/(components)/Loading";
 import CatSelection from "@/app/(components)/CatSelection";
 import EmptyCard from "@/app/(components)/EmptyCard";
 import PriceInput from "@/app/(components)/PriceInput";
+import NotConnected from "@/app/(components)/NotConnected";
 
 import useSellCat from "@/hooks/useSellCat";
 import { useStore } from "@/store/moodDollStore";
 
 const Sell: FC = () => {
-  EmptyCard;
+  const { isConnected } = useAccount();
+
   const { catsWithoutOffer } = useStore();
   const { handleSell, loading } = useSellCat();
   const [catToSell, setCatToSell] = useState<SelectedCat>();
@@ -37,7 +40,9 @@ const Sell: FC = () => {
       handleReset();
     }
   };
-
+  if (!isConnected) {
+    return <NotConnected />;
+  }
   return (
     <>
       <Header
@@ -73,11 +78,10 @@ const Sell: FC = () => {
                   Reset
                 </Button>
                 <Button
-                  colorScheme="green"
                   disabled={!catToSell || loading}
                   onClick={onSell}
                   isLoading={loading}
-                  className="box-shadow"
+                  className="box-shadow bg-blue-300 color-white"
                 >
                   Sell
                 </Button>

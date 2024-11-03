@@ -1,6 +1,6 @@
 "use client";
 import type { FC } from "react";
-
+import { useAccount } from "wagmi";
 import { Wrap } from "@chakra-ui/react";
 
 import Header from "@/app/(components)/Header";
@@ -9,16 +9,21 @@ import { useStore } from "@/store/moodDollStore";
 
 import EmptyCard from "@/app/(components)/EmptyCard";
 import DisplayCat from "@/app/(components)/DisplayCat";
+import NotConnected from "@/app/(components)/NotConnected";
 
 const Mine: FC = () => {
-  const { userCats } = useStore();
-  console.log("userCats==", userCats);
+  const { isConnected } = useAccount();
 
+  const { userCats } = useStore();
+
+  if (!isConnected) {
+    return <NotConnected />;
+  }
   return (
     <>
       <Header
-        title="Cats Inventory"
-        description="Display all the cats NFTs that you own."
+        title="Dogs NFT Market"
+        description="Display all the dogs NFTs that you own."
       />
 
       {!userCats && <Loading />}
